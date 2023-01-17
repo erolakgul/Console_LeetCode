@@ -1,5 +1,6 @@
 using Console_LeetCode.Utils;
 using NUnit.Framework;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Console_LeetCode.Test
@@ -7,6 +8,13 @@ namespace Console_LeetCode.Test
     [TestFixture]
     public class Tests
     {
+        private TestContext testContextInstance;
+        public TestContext TestContext
+        {
+            get { return testContextInstance; }
+            set { testContextInstance = value; }
+        }
+
         [SetUp]
         public void Setup()
         {
@@ -59,25 +67,42 @@ namespace Console_LeetCode.Test
             Assert.AreEqual(IsOk, 0);
         }
 
-
         [Test]
-        public void IntToRoman()
+        public void Check_IntToRoman_WhenExecuted()
         {
-            int IsOk = 0;
+            Dictionary<string, int> _responseDictionary = new();
 
-            int num1 = 3;
-            string res1 = Helper.IntToRoman(num1);
-            IsOk = ("III" == res1) ? IsOk : 1;
+            _responseDictionary.Add("III", 3);
+            _responseDictionary.Add("LVIII", 58);
+            _responseDictionary.Add("MCMXCIV", 1994);
 
-            int num2 = 58;
-            string res2 = Helper.IntToRoman(num2);
-            IsOk = ("LVIII" == res2) ? IsOk : 1;
+            bool response = false;
+            int _falseCount = 0;
 
-            int num3 = 1994;
-            string res3 = Helper.IntToRoman(num3);
-            IsOk = ("MCMXCIV" == res3) ? IsOk : 1;
+            foreach (var item in _responseDictionary)
+            {
+                #region  Arrange
+                string _responseExpected = item.Key;
+                string _responseRoman = Helper.IntToRoman(item.Value); //1994
+                #endregion
 
-            Assert.AreEqual(IsOk, 0);
+                #region act
+                response = (_responseRoman == _responseExpected) ? true : false;
+                _falseCount = (response == false) ? _falseCount + 1 : _falseCount;
+                #endregion
+
+                TestContext.WriteLine($"Beklenen    : {_responseExpected}\nGelen Cevap : {_responseRoman}");
+                string result = (response) ? "Baþarýlý" : "Baþarýsýz";
+                TestContext.WriteLine($"Sonuç       : {result}");
+            }
+            TestContext.WriteLine("*************************************");
+            TestContext.WriteLine($"Hatalý Kayýt Sayýsý : {_falseCount}");
+
+            #region assert
+            Assert.AreEqual(_falseCount, 0);
+            //Assert.AreNotSame(connectionSettings.PortNumber, connectionSettings.MaxCountQueue);
+            #endregion
         }
+
     }
 }
