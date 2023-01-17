@@ -1,4 +1,6 @@
-﻿namespace Console_LeetCode.Utils
+﻿using System.Text;
+
+namespace Console_LeetCode.Utils
 {
     public static class Helper
     {
@@ -65,6 +67,110 @@
             }
 
             return pivotIndex;
+        }
+
+
+        public static string IntToRoman(int num)
+        {
+            Dictionary<int, string> keyValuePairs = new Dictionary<int, string>();
+            keyValuePairs.Add(1, "I");
+            keyValuePairs.Add(5, "V");
+            keyValuePairs.Add(10, "X");
+            keyValuePairs.Add(50, "L");
+            keyValuePairs.Add(100, "C");
+            keyValuePairs.Add(500, "D");
+            keyValuePairs.Add(1000, "M");
+
+            StringBuilder stringBuilder = new();
+
+            // 1994
+            int lengtNum = num.ToString().Length;
+            int maxUnit = 1;
+
+            for (int i = 1; i < lengtNum + 1; i++)
+            {
+                if (i != 1)
+                {
+                    maxUnit = maxUnit * 10;
+                }
+            }
+
+
+            for (int i = lengtNum; i >= 0; i--)
+            {
+                if (maxUnit != 0)
+                {
+                    int factor = 0;
+                    factor = num / (maxUnit);
+
+                    if (keyValuePairs.ContainsKey(factor * maxUnit))
+                    {
+                        stringBuilder.Append(keyValuePairs.Where(c => c.Key == factor * maxUnit).Select(f => f.Value).SingleOrDefault());
+                    }
+                    else
+                    {
+                        int upNum = maxUnit * 10;
+                        int diffNum = upNum - (factor * maxUnit);
+                        string _currentRoman = "";
+
+                        // fark birler basamağı kadar ise
+                        if ((upNum - diffNum).ToString().Length == 1)
+                        {
+                            int oneUpNum = (5 - (upNum - diffNum));
+
+                            if (oneUpNum > 0)
+                            {
+                                if (oneUpNum == 1)
+                                {
+                                    //_currentRoman = "IV";
+                                    _currentRoman = keyValuePairs.Where(c => c.Key == 1).Select(f => f.Value).SingleOrDefault() + keyValuePairs.Where(c => c.Key == 5).Select(f => f.Value).SingleOrDefault();
+                                }
+                                else
+                                {
+                                    for (int Y = 0; Y < (upNum - diffNum); Y++)
+                                    {
+                                        _currentRoman += "I";
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                // 10 - 5 ARASI demek oluyor
+                                if (diffNum == 1)
+                                {
+                                    _currentRoman = keyValuePairs.Where(c => c.Key == diffNum).Select(f => f.Value).SingleOrDefault() + keyValuePairs.Where(c => c.Key == upNum).Select(f => f.Value).SingleOrDefault();
+                                }
+                                else
+                                {
+                                    _currentRoman = "V";
+                                    for (int r = 0; r < ((upNum - diffNum) - 5); r++)
+                                    {
+                                        _currentRoman += "I";
+                                    }
+                                }
+
+                            }
+                        }
+                        else
+                        {
+                            _currentRoman = keyValuePairs.Where(c => c.Key == diffNum).Select(f => f.Value).SingleOrDefault() + keyValuePairs.Where(c => c.Key == upNum).Select(f => f.Value).SingleOrDefault();
+                        }
+                        stringBuilder.Append(_currentRoman);
+
+                    }
+
+                    maxUnit = maxUnit / 10;
+
+                    if (num.ToString().Length != 1)
+                    {
+                        num = Convert.ToInt32(num.ToString().Remove(0, 1));
+                    }
+                }
+
+            }
+
+
+            return stringBuilder.ToString();
         }
 
     }

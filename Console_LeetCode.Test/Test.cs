@@ -58,5 +58,26 @@ namespace Console_LeetCode.Test
 
             Assert.AreEqual(IsOk, 0);
         }
+
+
+        [Test]
+        public void IntToRoman()
+        {
+            int IsOk = 0;
+
+            int num1 = 3;
+            string res1 = Helper.IntToRoman(num1);
+            IsOk = ("III" == res1) ? IsOk : 1;
+
+            int num2 = 58;
+            string res2 = Helper.IntToRoman(num2);
+            IsOk = ("LVIII" == res2) ? IsOk : 1;
+
+            int num3 = 1994;
+            string res3 = Helper.IntToRoman(num3);
+            IsOk = ("MCMXCIV" == res3) ? IsOk : 1;
+
+            Assert.AreEqual(IsOk, 0);
+        }
     }
 }
