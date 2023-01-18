@@ -67,6 +67,27 @@ namespace Console_LeetCode.Test
             Assert.AreEqual(IsOk, 0);
         }
 
+
+        [Test]
+        public void IsIsomorphic()
+        {
+            int IsOk = 0;
+
+            string s = "egg";
+            string t = "add";
+            IsOk = (Helper.IsIsomorphic(s,t)) ? IsOk : 1;
+
+            string s2 = "foo";
+            string t2 = "bar";
+            IsOk = (Helper.IsIsomorphic(s, t)) ? IsOk : 1;
+
+            string s3 = "paper";
+            string t3 = "title";
+            IsOk = (Helper.IsIsomorphic(s, t)) ? IsOk : 1;
+
+            Assert.AreEqual(IsOk, 0);
+        }
+
         [Test]
         public void Check_IntToRoman_WhenExecuted()
         {

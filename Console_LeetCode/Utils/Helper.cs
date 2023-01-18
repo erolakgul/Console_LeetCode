@@ -70,7 +70,32 @@ namespace Console_LeetCode.Utils
             return pivotIndex;
         }
 
+        public static bool IsIsomorphic(string s, string t)
+        {
+            if (s.Length != t.Length)
+                return false;
 
+            if (s == null || t == null)
+
+                return false;
+
+            int[] chars1 = new int[128];
+            int[] chars2 = new int[128];
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (chars1[s[i]] != chars2[t[i]])
+                {
+                    return false;
+                }
+                else
+                {
+                    chars1[s[i]] = i + 1;
+                    chars2[t[i]] = i + 1;
+                }
+            }
+            return true;
+        }
 
 
 
