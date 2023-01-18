@@ -12,5 +12,9 @@ int[] nums2 = new int[] { 1, 2, 3 };//{ 1, 7, 3, 6, 5, 6 };
 Console.WriteLine($" Result 2 => {Helper.PivotIndex(nums2)}");
 
 
+string s = "aaaaaa";
+string t = "bbaaaa";
+bool res  = Helper.IsSubsequence(s, t);
+
 
 Console.ReadKey();

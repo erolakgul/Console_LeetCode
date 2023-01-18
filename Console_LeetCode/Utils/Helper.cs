@@ -97,7 +97,34 @@ namespace Console_LeetCode.Utils
             return true;
         }
 
+        public static bool IsSubsequence(string s, string t)
+        {
+            char[] st = s.ToArray();
 
+            int currentIndex = -1;
+            int lastIndex = -1;
+            int searchNum = 0;
+
+            for (int i = 0; i < st.Length; i++)
+            {
+                if (t.Contains(st[i]))
+                {
+                    // .Skip(lastIndex)
+                    currentIndex = t.IndexOf(st[i], searchNum);
+                    if (lastIndex == -1) lastIndex = currentIndex;
+
+                    if (currentIndex < lastIndex) return false;
+                    lastIndex = currentIndex;
+                    searchNum = lastIndex + 1;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            return true;
+        }
 
         // 1
         // bir stringteki unique harf sayısı

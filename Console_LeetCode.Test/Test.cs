@@ -79,11 +79,32 @@ namespace Console_LeetCode.Test
 
             string s2 = "foo";
             string t2 = "bar";
-            IsOk = (Helper.IsIsomorphic(s, t)) ? IsOk : 1;
+            IsOk = (Helper.IsIsomorphic(s, t)) ? IsOk : 2;
 
             string s3 = "paper";
             string t3 = "title";
-            IsOk = (Helper.IsIsomorphic(s, t)) ? IsOk : 1;
+            IsOk = (Helper.IsIsomorphic(s, t)) ? IsOk : 3;
+
+            Assert.AreEqual(IsOk, 0);
+        }
+
+        [Test]
+        public void IsSubsequence()
+        {
+            int IsOk = 0;
+
+            string s = "abc";
+            string t = "ahbgdc";
+            IsOk = (Helper.IsSubsequence(s, t)) ? IsOk : 1; // true bekle
+
+            string s2 = "axc";
+            string t2 = "ahbgdc";
+            IsOk = (Helper.IsSubsequence(s2, t2)) ? 2 : IsOk;  // false bekle
+
+            string s3 = "aaaaaa";
+            string t3 = "bbaaaa";
+            IsOk = (Helper.IsSubsequence(s3, t3)) ? 3 : IsOk;  // false bekle
+
 
             Assert.AreEqual(IsOk, 0);
         }
