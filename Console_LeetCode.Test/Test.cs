@@ -27,17 +27,17 @@ namespace Console_LeetCode.Test
             int isOk = 0;
 
             int[] nums1 = new int[] { 1, 2, 3 , 4};
-            int[] nums1_Response = Helper.Running_Sum_of_1d_Array(nums1);
+            int[] nums1_Response = LeetCode75.Running_Sum_of_1d_Array(nums1);
             isOk = (nums1_Response.SequenceEqual(new[] { 1, 3, 6, 10 })) ? isOk : 1;
 
 
             int[] nums2 = new int[] { 1, 1, 1, 1 , 1 };
-            int[] nums2_Response = Helper.Running_Sum_of_1d_Array(nums2);
+            int[] nums2_Response = LeetCode75.Running_Sum_of_1d_Array(nums2);
             isOk = (nums2_Response.SequenceEqual(new[] { 1, 2, 3, 4, 5 })) ?  isOk : 2;
 
 
             int[] nums3 = new int[] { 3, 1, 2, 10, 1 };
-            int[] nums3_Response = Helper.Running_Sum_of_1d_Array(nums3);
+            int[] nums3_Response = LeetCode75.Running_Sum_of_1d_Array(nums3);
             isOk = (nums3_Response.SequenceEqual(new[] { 3, 4, 6, 16, 17 })) ?  isOk : 3;
 
 
@@ -51,17 +51,17 @@ namespace Console_LeetCode.Test
             int IsOk = 0;
 
             int[] nums1 = new int[] { 1, 7, 3, 6, 5, 6 };
-            int nums1_response_index = Helper.PivotIndex(nums1);
+            int nums1_response_index = LeetCode75.PivotIndex(nums1);
             IsOk = (nums1_response_index == 3) ? IsOk : 1;
 
 
             int[] nums2 = new int[] { 1, 2, 3 };
-            int nums2_response_index = Helper.PivotIndex(nums2);
+            int nums2_response_index = LeetCode75.PivotIndex(nums2);
             IsOk = (nums2_response_index == -1 ) ? IsOk : 2;
 
 
             int[] nums3 = new int[] { 2, 1, -1 };
-            int nums3_response_index = Helper.PivotIndex(nums3);
+            int nums3_response_index = LeetCode75.PivotIndex(nums3);
             IsOk = (nums3_response_index == 0) ? IsOk : 3;
 
             Assert.AreEqual(IsOk, 0);
@@ -75,15 +75,15 @@ namespace Console_LeetCode.Test
 
             string s = "egg";
             string t = "add";
-            IsOk = (Helper.IsIsomorphic(s,t)) ? IsOk : 1;
+            IsOk = (LeetCode75.IsIsomorphic(s,t)) ? IsOk : 1;
 
             string s2 = "foo";
             string t2 = "bar";
-            IsOk = (Helper.IsIsomorphic(s, t)) ? IsOk : 2;
+            IsOk = (LeetCode75.IsIsomorphic(s, t)) ? IsOk : 2;
 
             string s3 = "paper";
             string t3 = "title";
-            IsOk = (Helper.IsIsomorphic(s, t)) ? IsOk : 3;
+            IsOk = (LeetCode75.IsIsomorphic(s, t)) ? IsOk : 3;
 
             Assert.AreEqual(IsOk, 0);
         }
@@ -95,15 +95,15 @@ namespace Console_LeetCode.Test
 
             string s = "abc";
             string t = "ahbgdc";
-            IsOk = (Helper.IsSubsequence(s, t)) ? IsOk : 1; // true bekle
+            IsOk = (LeetCode75.IsSubsequence(s, t)) ? IsOk : 1; // true bekle
 
             string s2 = "axc";
             string t2 = "ahbgdc";
-            IsOk = (Helper.IsSubsequence(s2, t2)) ? 2 : IsOk;  // false bekle
+            IsOk = (LeetCode75.IsSubsequence(s2, t2)) ? 2 : IsOk;  // false bekle
 
             string s3 = "aaaaaa";
             string t3 = "bbaaaa";
-            IsOk = (Helper.IsSubsequence(s3, t3)) ? 3 : IsOk;  // false bekle
+            IsOk = (LeetCode75.IsSubsequence(s3, t3)) ? 3 : IsOk;  // false bekle
 
 
             Assert.AreEqual(IsOk, 0);
@@ -125,7 +125,7 @@ namespace Console_LeetCode.Test
             {
                 #region  Arrange
                 string _responseExpected = item.Key;
-                string _responseRoman = Helper.IntToRoman(item.Value); //1994
+                string _responseRoman = LeetCode75.IntToRoman(item.Value); //1994
                 #endregion
 
                 #region act
