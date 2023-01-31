@@ -16,14 +16,14 @@
             this.next = next;
         }
 
-        public ListNode CreateListNode(int[] array)
-        {
-            for (int i = 0; i < array.Length; i++)
-            {
-                new ListNode(i, new ListNode(array[i]));
-            }
+        //public ListNode CreateListNode(int[] array)
+        //{
+        //    for (int i = 0; i < array.Length; i++)
+        //    {
+        //        new ListNode(i, new ListNode(array[i]));
+        //    }
 
-            return this.next;
-        }
+        //    return this.next;
+        //}
     }
 }
